@@ -20,18 +20,21 @@ build:
 requirements:
   host:
     - python ${{ python_min }}.*
-    - flit-core <4
     - pip
+    - flit-core <5
   run:
     - python >=${{ python_min }}
     - packaging >=21.3
+    # from the yaml extra
     # yaml extra:
     - pyyaml >=3.10
 tests:
   - python:
       imports:
         - apispec
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
   license: MIT
